@@ -15,28 +15,49 @@ if ($editmode) {
     cInclude('module', 'includes/style.cntnd_giftcard.php');
 }
 
-// input/vars
-$truncate = (bool) "CMS_VALUE[1]";
-$lines = (int) "CMS_VALUE[2]";
-if (empty($lines)){
-  $lines = 5;
-}
-$own_js = (bool) "CMS_VALUE[3]";
-$selectedDir = "CMS_VALUE[4]";
-
-// other vars
-$uuid = rand();
-$text = "CMS_HTML[1]";
-$giftcard = new Cntnd\Giftcard\CntndGiftcard($lang, $client);
-
 // module
 if ($editmode){
     echo '<span class="module_box"><label class="module_label">'.mi18n("MODULE").'</label></span>';
 }
 
+// PUBLIC
+$uriBuilder = cUriBuilderFrontcontent::getInstance();
+$uriBuilder->buildUrl(['idart' => $idart], true);
+$redirect = $uriBuilder->getUrl();
+
+if (!empty($_GET['result']) && $_GET['result'] == "success") {
+    echo '<div class="cntnd_alert cntnd_alert-primary">' . mi18n("SUCCESS") . '</div>';
+}
+echo '<div class="cntnd_giftcard">';
+echo '<form method="post" id="cntnd_giftcard-reservation" name="cntnd_giftcard-reservation" action="https://giftcard.schuepfenried.ch/order/">';
+
+// show messages
+if (!empty($_GET['result']) && $_GET['result'] == "failure") {
+    echo '<div id="cntnd_giftcard-form"></div>';
+}
+$failureMsg = (!empty($_GET['error']) && $_GET['error'] == "failure") ? '' : 'hide';
+echo '<div class="cntnd_alert cntnd_alert-danger cntnd_booking-validation ' . $failureMsg . '">';
+echo mi18n("VALIDATION");
+echo '<ul>';
+echo '<li class="cntnd_booking-validation-required">' . mi18n("VALIDATION_REQUIRED") . '</li>';
+echo '<li class="cntnd_booking-validation-dates">' . mi18n("VALIDATION_DATES") . '</li>';
+echo '</ul>';
+echo '</div>';
+if (!empty($_GET['error']) && $_GET['error'] == "error") {
+    echo '<div class="cntnd_alert cntnd_alert-danger">' . mi18n("FAILURE") . '</li></div>';
+}
+if (!empty($_GET['error']) && $_GET['error'] == "payment") {
+    echo '<div class="cntnd_alert cntnd_alert-danger">' . mi18n("PAYMENT_FAILURE") . '</li></div>';
+}
+
 $tpl = cSmartyFrontend::getInstance();
-$tpl->assign('truncate', $truncate);
-$tpl->assign('uuid', 'idart'.$idart);
-$tpl->assign('text', $text);
 $tpl->display('default.html');
+
+echo '<button type="submit" class="btn btn-primary">' . mi18n("SAVE") . '</button>&nbsp;';
+echo '<button type="reset" class="btn">' . mi18n("RESET") . '</button>';
+echo '<input type="hidden" name="required" id="cntnd_giftcard-required" />';
+echo '<input type="hidden" name="fields" id="cntnd_giftcard-fields" />';
+echo '<input type="hidden" name="redirect" value="' . $redirect . '" />';
+echo '</form>';
+echo '</div>';
 ?>

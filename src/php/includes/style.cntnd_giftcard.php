@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cntnd/core_style@1.1.1/dist/core_style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cntnd/core_style@1.2.0/dist/core_style.css">
 <style>
 <?php
 $mod = new cApiModule($cCurrentModule);
