@@ -1,9 +1,9 @@
 MODULE=Gutscheine
-SUCCESS=
-VALIDATION=
-VALIDATION_REQUIRED=
+SUCCESS=Der Gutschein wird ihnen per E-Mail zugesendet.
+VALIDATION=Es gab ein Fehler:
+VALIDATION_REQUIRED=Bitte füllen Sie alle Felder mit "*" aus
 VALIDATION_DATES=
-FAILURE=
-PAYMENT_FAILURE=
+FAILURE=Es gab ein Fehler, bitte wenden sie sich an das Schüpfenried Team.
+PAYMENT_FAILURE=Es gab ein Fehler mit dem Bezahlsystem, bitte wenden sie sich an das Schüpfenried Team.
 SAVE=Gutschein kaufen
 RESET=Zurücksetzen

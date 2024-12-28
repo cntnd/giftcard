@@ -40,14 +40,13 @@ echo '<div class="cntnd_alert cntnd_alert-danger cntnd_booking-validation ' . $f
 echo mi18n("VALIDATION");
 echo '<ul>';
 echo '<li class="cntnd_booking-validation-required">' . mi18n("VALIDATION_REQUIRED") . '</li>';
-echo '<li class="cntnd_booking-validation-dates">' . mi18n("VALIDATION_DATES") . '</li>';
 echo '</ul>';
 echo '</div>';
-if (!empty($_GET['error']) && $_GET['error'] == "error") {
-    echo '<div class="cntnd_alert cntnd_alert-danger">' . mi18n("FAILURE") . '</li></div>';
-}
 if (!empty($_GET['error']) && $_GET['error'] == "payment") {
     echo '<div class="cntnd_alert cntnd_alert-danger">' . mi18n("PAYMENT_FAILURE") . '</li></div>';
+}
+else if (!empty($_GET['error'])) {
+    echo '<div class="cntnd_alert cntnd_alert-danger">' . mi18n("FAILURE") . '</li></div>';
 }
 
 $tpl = cSmartyFrontend::getInstance();
