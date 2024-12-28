@@ -1,7 +1,7 @@
 {
-  "name": "cntnd_SKELETON",
+  "name": "cntnd_giftcard",
   "version": "1.0.0",
-  "description": "Skeleton Module",
+  "description": "Giftcard Module",
   "devDependencies": {
     "del": "^5.1.0",
     "gulp": "^4.0.2",
@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cntnd/SKELETON.git"
+    "url": "git+https://github.com/cntnd/giftcard.git"
   },
   "author": "Thomas D Ascoli, thomas@dasco.li",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cntnd/SKELETON/issues"
+    "url": "https://github.com/cntnd/giftcard/issues"
   },
-  "homepage": "https://github.com/cntnd/SKELETON#readme"
+  "homepage": "https://github.com/cntnd/giftcard#readme"
 }
